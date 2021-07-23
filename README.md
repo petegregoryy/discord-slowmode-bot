@@ -1,5 +1,5 @@
 ## Discord Slow Mode Bot - Developed for ATT
-Discord's default slow mode isn't long enough?This is a bot developed to allow increased length slow modes in channels. Originally developed as a bot for the A Township Tale Discord server to moderate the "community servers" channels, it will work as a lengthened slowmode bot with the correct setup
+Discord's default slow mode isn't long enough? This is a bot developed to allow increased length slow modes in channels. Originally developed as a bot for the A Township Tale Discord server to moderate the "community servers" channels, it will work as a lengthened slowmode bot with the correct setup
 
 ## Setup
 To host this bot yourself, you will need to change a couple of things.  First, create a `config.json` file which looks like this:
@@ -11,7 +11,7 @@ To host this bot yourself, you will need to change a couple of things.  First, c
 Paste your token into the `config.json`.
 
 ### Bot Exclusion
-Next you **must** change the `botID = "ID"` variable to the ID of your bot user.  Otherwise the bot will add itself to the list for slowmode. This will cause problems if you aren't using split channels.
+Next you **must** change the `botID = "[ID]"` variable to the ID of your bot user.  Otherwise the bot will add itself to the list for slowmode. This will cause problems if you aren't using split channels.
 
 ### Split Channels
 This bot can be set up to watch a seperate channel to the one it reports into.  **E.G.** The bot watches one channel, mentions users in another channnel if they break the slowmode.
