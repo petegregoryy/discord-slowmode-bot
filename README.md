@@ -2,7 +2,11 @@
 Discord's default slow mode isn't long enough? This is a bot developed to allow increased length slow modes in channels. 
 
 ## Setup
-This bot requires `discord.js` to run, along with `nodejs`. `discord.js` can be installed with `npm install --save discord.js`, and `nodejs` can be installed from https://nodejs.org .
+This bot requires `discord.js` to run, along with `nodejs`. NodeJS can be installed from https://nodejs.org, and the latest Discord. can be installed with 
+```
+npm install --save discord.js
+``` 
+
 
 To host this bot yourself, you will need to change a couple of things. After installing NodeJS and Discord.Js, create a `config.json` file in your working directory which looks like this:
 ```
