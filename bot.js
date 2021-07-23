@@ -24,6 +24,8 @@ let reportChannelId = "868246970467233823";
 // ID of Bot user;
 let botID = "868223435233435678";
 
+let reportMessage = "you cannot send another message within 2 minutes of your last!"
+
 // Timeout time in ms.
 let timeoutTime = 120000; 
 
@@ -61,7 +63,7 @@ function RunOnMessage (message){
     if(userIds.hasOwnProperty(message.author.id)){
         message.delete()
         let reportChannel = client.channels.cache.get(reportChannelId);
-        reportChannel.send(`${message.author}, you cannot send another message within 2 minutes of your last!`);
+        reportChannel.send(`${message.author}, ${reportMessage}`);
     }
     else{
         userIds[message.author.id] = message.createdAt
