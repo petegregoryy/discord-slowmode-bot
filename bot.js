@@ -22,7 +22,7 @@ let userIds = {};
 
 client.on("message", message => {
     if(message.channel.id === channelId && message.author.id != botID){
-        console.log(message.author.tag + " - " + message.content);
+        //console.log(message.author.tag + " - " + message.content);
         RunOnMessage(message);
     }    
     //console.log(message);
@@ -36,13 +36,13 @@ function RunOnMessage (message){
     for(key in userIds){
         if(currentDate - new Date(userIds[key]) > 120000){
             delete userIds[key]
-            console.log("deleting key");            
+            console.log("deleting key " + key);            
         }
         else{
             console.log("breaking - " + userIds[key])
             break;
         }
-        console.log(currentDate - new Date(userIds[key]));
+        //console.log(currentDate - new Date(userIds[key]));
     };
     
 
@@ -54,9 +54,9 @@ function RunOnMessage (message){
     }
     else{
         //message.reply("message added to json")
-        userIds[message.author.id] = message.createdAt
+        //userIds[message.author.id] = message.createdAt
     }
-    console.log(userIds);
+    //console.log(userIds);
     fs.writeFile("persistent-list.txt",JSON.stringify(userIds),function(err){if(err) throw err;});
 }
 
