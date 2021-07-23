@@ -20,7 +20,9 @@ Next you **must** change the `botID = "[ID]"` variable to the ID of your bot use
 
 ### Split Channels
 This bot can be set up to watch a seperate channel to the one it reports into.  **E.G.** The bot watches one channel, mentions users in another channnel if they break the slowmode.
-In order to enable split channels, change the `channelID = "[ID]";` and `reportID = "[ID]";` variables to the channel IDs of the watch channel and the reporting channel. 
+In order to enable split channels, change the `channelID = "[ID]";` and `reportID = "[ID]";` variables to the channel IDs of the watch channel and the reporting channel.
+If you would like the bot to reply in the same channel, set both variables the same.
+If you would like to disable reporting, change the `reporting = true` variable to `false`.
 
 ### Mod Role Exclusion (Future Feature)
 The bot will be able to exclude certain roles from being affected by the slowmode, much like Discord's official slowmode. The `modRoles = ["[ROLENAME]","[ROLENAME]"]` list contains all roles that will be excluded.  You can add as many roles as you like to the list as long as the names match a role name in the server.

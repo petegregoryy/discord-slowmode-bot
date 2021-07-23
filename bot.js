@@ -23,7 +23,9 @@ let channelId = "868227546972586025";
 let reportChannelId = "868246970467233823";
 // ID of Bot user;
 let botID = "868223435233435678";
-
+// Enable/disable reporting of slowmode violation.
+let reporting = true;
+// Message to be sent after a user ping in the reports channel.
 let reportMessage = "you cannot send another message within 2 minutes of your last!"
 
 // Timeout time in ms.
@@ -62,8 +64,11 @@ function RunOnMessage (message){
     // Check if user has already sent a message within the time, deletes the message and tells them in the reporting channel.
     if(userIds.hasOwnProperty(message.author.id)){
         message.delete()
-        let reportChannel = client.channels.cache.get(reportChannelId);
-        reportChannel.send(`${message.author}, ${reportMessage}`);
+        if(reporting){
+            let reportChannel = client.channels.cache.get(reportChannelId);
+            reportChannel.send(`${message.author}, ${reportMessage}`);    
+        }
+        
     }
     else{
         userIds[message.author.id] = message.createdAt
