@@ -1,4 +1,4 @@
-## Discord Slow Mode Bot - Developed for ATT
+## Discord Slow Mode Bot
 Discord's default slow mode isn't long enough? This is a bot developed to allow increased length slow modes in channels. 
 
 ## Setup
