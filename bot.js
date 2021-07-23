@@ -14,6 +14,7 @@ client.once('ready', () => {
 //Variables
 let modRoles = ["Mods","Devs"];
 let channelId = "868227546972586025";
+let reportChannelId = "868246970467233823";
 let botID = "868223435233435678";
 
 let userIds = {};
@@ -24,7 +25,7 @@ client.on("message", message => {
         console.log(message.author.tag + " - " + message.content);
         RunOnMessage(message);
     }    
-    console.log(message);
+    //console.log(message);
 })
 
 
@@ -47,10 +48,12 @@ function RunOnMessage (message){
 
 
     if(userIds.hasOwnProperty(message.author.id)){
-        message.reply("Repeat message!!!")
+        message.delete()
+        let reportChannel = client.channels.cache.get(reportChannelId);
+        reportChannel.send(`${message.author}, you cannot send another message within 2 minutes of your last!`);
     }
     else{
-        message.reply("message added to json")
+        //message.reply("message added to json")
         userIds[message.author.id] = message.createdAt
     }
     console.log(userIds);
