@@ -13,23 +13,28 @@ client.once('ready', () => {
     console.log("Ready");
 });
 
-//Variables
+// ------ Variables -------
+
+//List of roles to exclude from bot (Currently non-working).
 let modRoles = ["Mods","Devs"];
+// Channel ID to watch.
 let channelId = "868227546972586025";
+//Channel ID to report in.
 let reportChannelId = "868246970467233823";
+// ID of Bot user;
 let botID = "868223435233435678";
-let timeoutTime = 120000; // Timeout time in ms.
+
+// Timeout time in ms.
+let timeoutTime = 120000; 
+
+// ------------------------
 
 let userIds = {};
 
-// Functions
-
 client.on("message", message => {
     if(message.channel.id === channelId && message.author.id != botID){
-        //console.log(message.author.tag + " - " + message.content);
         RunOnMessage(message);
     }    
-    //console.log(message);
 })
 
     //check all json entries for difference in time, if current time > 2 weeks since message creation remove entry
@@ -40,6 +45,7 @@ function RunOnMessage (message){
 
     for(key in userIds){
         if(currentDate - new Date(userIds[key]) > timeoutTime){
+            // Deletes JSON entry if time difference since last message is longer than the timeout time.
             delete userIds[key]
             console.log("deleting key " + key);            
         }
@@ -48,7 +54,6 @@ function RunOnMessage (message){
             console.log("breaking - " + userIds[key])
             break;
         }
-        //console.log(currentDate - new Date(userIds[key]));
     };
     
 
@@ -59,10 +64,8 @@ function RunOnMessage (message){
         reportChannel.send(`${message.author}, you cannot send another message within 2 minutes of your last!`);
     }
     else{
-        //message.reply("message added to json")
-        //userIds[message.author.id] = message.createdAt
+        userIds[message.author.id] = message.createdAt
     }
-    //console.log(userIds);
 
     // Writes current timesheet to file, this gives persistence through restarts.
     fs.writeFile("persistent-list.txt",JSON.stringify(userIds),function(err){if(err) throw err;});
