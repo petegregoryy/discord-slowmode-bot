@@ -41,15 +41,14 @@ client.on("message", message => {
     }    
 })
 
-    //check all json entries for difference in time, if current time > 2 weeks since message creation remove entry
 
 function RunOnMessage (message){
     let currentDate = new Date();
 
-
+    //checks json for previous message times, if timeoutTime has passed remove from the json.
     for(key in userIds){
         if(currentDate - new Date(userIds[key]) > timeoutTime){
-            // Deletes JSON entry if time difference since last message is longer than the timeout time.
+            // Deletes json entry if time difference since last message is longer than the timeout time.
             delete userIds[key]
             console.log("deleting key " + key);            
         }
